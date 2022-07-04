@@ -27,18 +27,24 @@
 
 const task1 = (callback) => {
   console.log('Starting task 1...');
-  console.log('Finished task 1...');
-  callback();
+  setTimeout(() => {
+    console.log('Finished task 1...');
+    callback();
+  }, 5000);
 };
 const task2 = (callback) => {
   console.log('Starting task 2...');
-  console.log('Finished task 2...');
-  callback();
+  setTimeout(() => {
+    console.log('Finished task 2...');
+    callback();
+  }, 5000);
 };
 const task3 = (callback) => {
   console.log('Starting task 3...');
-  console.log('Finished task 3...');
-  callback();
+  setTimeout(() => {
+    console.log('Finished task 3...');
+    callback();
+  }, 5000);
 };
 
 const tasks = [
@@ -60,6 +66,7 @@ function next() {
     const task = tasks[index];
     index += 1;
     task(() => {
+      console.log(`Task finished, closing thread...`);
       completed += 1;
       if (completed === tasks.length) return finish();
       running -= 1;
